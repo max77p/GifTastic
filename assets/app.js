@@ -32,7 +32,7 @@ function showGif() {
 
     var gif = $(this).attr("data-name");
 
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=funny+" + gif + "&limit=10&api_key=b9iYVAwBVidnNVDrHuHcJZehZKWVNYSs";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=funny+" + gif + "&limit=10&api_key=b9iYVAwBVidnNVDrHuHcJZehZKWVNYSs";
 
 
     $.ajax({
