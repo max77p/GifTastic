@@ -30,7 +30,7 @@ $("#add-gif").on("click", function (event) {
 // Calling the renderButtons function to display the initial list of topics array
 renderButtons();
 
-
+var animatetemp;
 function showGif() {
 
     var gif = $(this).attr("data-name");
@@ -43,20 +43,45 @@ function showGif() {
         method: "GET"
     }).then(function (response) {
         console.log(response);
-        var tempArray=response.data;
+        var tempArray = response.data;
         console.log(Object.keys(tempArray));
-        var length=tempArray.length;
+        var length = tempArray.length;
         console.log(length);
 
-        for(var i=0;i<length;i++){
-            var card=$("<div class='card mainCard'>").append($("<img class='card-img-top imgCard'"+ "src='"+tempArray[i].images['480w_still'].url+"'alt='card image cap'>"));
-            var innerCard=$("<div class='card-body'>").append($("<p class='card-text'>"));
-            card.append(innerCard);
-            $('.leftSection').append(card); 
+        for (var i = 0; i < length; i++) {
+            var outterCard = $('<div class="card outterCard">');
+            var textCard = $("<div class='card-body'>").append($("<p class='card-text'>"));
+            $('.card-text').text("Rating: " + tempArray[i].rating);
+            outterCard.append(textCard);
+
+            var card = $('<div class="card mainCard" data-gifLink="' + tempArray[i].images.original.url + '" data-imgLink="' + tempArray[i].images['480w_still'].url + '">').append($("<img class='card-img-top imgCard pause'" + "src='" + tempArray[i].images['480w_still'].url + "'alt='card image cap'>"));
+
+            outterCard.append(card);
+            $('.leftSection').append(outterCard);
         }
+
 
     });
 }//get gif related to button clicked
+
+$(document).on("click", ".mainCard", function (event) {
+    event.preventDefault();
+
+    var gif = $(this).attr("data-gifLink");
+    var still = $(this).attr("data-imgLink");
+
+    var thisImg=$(this).children('.imgCard');
+
+    if (thisImg.hasClass('pause')) {
+        $(this).children('.imgCard').attr("src", gif).removeClass('pause').addClass('play');
+        console.log(gif);
+    }
+    else if (thisImg.hasClass('play')) {
+        $(this).children('.imgCard').attr("src", still).removeClass('play').addClass('pause');
+        console.log(still);
+    }
+
+});
 
 /*<div class="card" style="width: 18rem;">
   <img class="card-img-top" src="..." alt="Card image cap">

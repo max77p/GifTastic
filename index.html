@@ -18,25 +18,26 @@
     <!--put all buttons here-->
 
     <div class="container mainSection">
-        <div clas="row">
-            <div class="col-md-10 leftSection">
+        <div clas="row mainSection">
+            <div class="col-md-10 col-xs-10 leftSection">
 
             </div>
-            <div class="col-md-2 rightSection">
-                    <form id="gif-form">
-                            <label for="gif-input">Add a Gif Bro</label>
-                            <input type="text" id="gif-input">
-                            <br>
-                
-                            <!-- Button triggers new movie to be added -->
-                            <input id="add-gif" type="submit" value="Add a Gif Bro">
-                        </form>
+            <div class="col-md-2 col-xs-2 rightSection">
+                <form>
+                    <div class="form-group gif-form">
+                        <label for="gif-input">Add a Gif Bro</label>
+                        <input type="text" class="form-control" id="gif-input" aria-describedby="emailHelp" placeholder="Search here">
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="add-gif">Submit</button>
+                </form>
+
+
             </div>
         </div>
 
 
     </div>
-   
+
 
 
 

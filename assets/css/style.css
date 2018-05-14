@@ -8,18 +8,34 @@ body{
 .mainSection{
     width:100%;
     padding:0;
-    height:10em;
+    height:100%;
 }
 .leftSection,.rightSection{
     border:2px solid black;
 
 }
+.leftSection{
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap:wrap;
+    margin:0 auto;
+    width:70%;
+}
+
+.rightSection{
+    width:30%;
+}
 .mainCard{
     width:18em;
+    height:18em;
     display: inline-block;
 
 }
 .imgCard{
     width:100%;
     height:100%;
+}
+
+.outterCard{
+    margin-top:1em;
 }
