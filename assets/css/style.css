@@ -20,16 +20,19 @@ body{
     flex-wrap:wrap;
     margin:0 auto;
     width:70%;
+    padding:1em;
 }
 
 .rightSection{
     width:30%;
 }
 .mainCard{
-    width:18em;
-    height:18em;
-    display: inline-block;
+    width:15em;
+    height:15em;
+}
 
+.mainCard:hover{
+    cursor: pointer;
 }
 .imgCard{
     width:100%;

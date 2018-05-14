@@ -1,11 +1,11 @@
 var topics = ["panda", "dog", "cat", "bear", "elephant"];//animals who do funny things
 
-// Function for displaying movie data
+// Function for rendering buttons
 function renderButtons() {
 
     for (elements in topics) {
         var gifButton = $("<button>");
-        gifButton.addClass("movie");
+        gifButton.addClass("gifBtn");
         gifButton.attr("data-name", topics[elements]);
         gifButton.text(topics[elements]);
         gifButton.appendTo("#btnSection");
@@ -14,15 +14,12 @@ function renderButtons() {
 
 // This function handles events where one button is clicked
 $("#add-gif").on("click", function (event) {
-
     $('#btnSection').empty();
     event.preventDefault();
 
     var gifInput = $("#gif-input").val().trim();
     topics.push(gifInput);
-
     renderButtons();
-
 });
 
 
@@ -35,7 +32,7 @@ function showGif() {
 
     var gif = $(this).attr("data-name");
 
-    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gif + "&limit=10&api_key=b9iYVAwBVidnNVDrHuHcJZehZKWVNYSs";
+    var queryURL = "http://api.giphy.com/v1/gifs/search?q=funny+" + gif + "&limit=10&api_key=b9iYVAwBVidnNVDrHuHcJZehZKWVNYSs";
 
 
     $.ajax({
@@ -83,12 +80,6 @@ $(document).on("click", ".mainCard", function (event) {
 
 });
 
-/*<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-</div>*/
 
 
-$(document).on("click", ".movie", showGif);
+$(document).on("click", ".gifBtn", showGif);
