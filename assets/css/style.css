@@ -42,3 +42,7 @@ body{
 .outterCard{
     margin-top:1em;
 }
+
+.nextBtn{
+    float:left;
+}

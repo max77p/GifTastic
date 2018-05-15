@@ -27,12 +27,22 @@ $("#add-gif").on("click", function (event) {
 // Calling the renderButtons function to display the initial list of topics array
 renderButtons();
 
-var animatetemp;
-function showGif() {
+var offset = 0;
+function showGif(el, eloff) {//get gif related to button clicked
 
-    var gif = $(this).attr("data-name");
+    var gif = el;
 
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=funny+" + gif + "&limit=10&api_key=b9iYVAwBVidnNVDrHuHcJZehZKWVNYSs";
+
+    var queryURL;
+    if (shownext10) {
+        console.log(shownext10);
+        offset += 10;
+        queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gif + "&limit=10&api_key=b9iYVAwBVidnNVDrHuHcJZehZKWVNYSs&offset=" + offset;
+    }
+    else {
+        offset = 0;
+        queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gif + "&limit=10&api_key=b9iYVAwBVidnNVDrHuHcJZehZKWVNYSs&offset=" + offset;
+    }
 
 
     $.ajax({
@@ -41,17 +51,17 @@ function showGif() {
     }).then(function (response) {
         console.log(response);
         var tempArray = response.data;
-        console.log(Object.keys(tempArray));
+        //console.log(Object.keys(tempArray));
         var length = tempArray.length;
         console.log(length);
 
         for (var i = 0; i < length; i++) {
+            console.log(tempArray[i].rating);
             var outterCard = $('<div class="card outterCard">');
-            var textCard = $("<div class='card-body'>").append($("<p class='card-text'>"));
-            $('.card-text').text("Rating: " + tempArray[i].rating);
+            var textCard = $("<div class='card-body'>").append($("<p class='card-text'>")).text("Rating: " + tempArray[i].rating);
             outterCard.append(textCard);
 
-            var card = $('<div class="card mainCard" data-gifLink="' + tempArray[i].images.original.url + '" data-imgLink="' + tempArray[i].images['480w_still'].url + '">').append($("<img class='card-img-top imgCard pause'" + "src='" + tempArray[i].images['480w_still'].url + "'alt='card image cap'>"));
+            var card = $('<div class="card mainCard" data-gifLink="' + tempArray[i].images.downsized.url + '" data-imgLink="' + tempArray[i].images['480w_still'].url + '">').append($("<img class='card-img-top imgCard pause'" + "src='" + tempArray[i].images['480w_still'].url + "'alt='card image cap'>"));
 
             outterCard.append(card);
             $('.leftSection').append(outterCard);
@@ -59,15 +69,15 @@ function showGif() {
 
 
     });
-}//get gif related to button clicked
+}
 
-$(document).on("click", ".mainCard", function (event) {
+$(document).on("click", ".mainCard", function (event) {//play and pause gifs
     event.preventDefault();
 
     var gif = $(this).attr("data-gifLink");
     var still = $(this).attr("data-imgLink");
 
-    var thisImg=$(this).children('.imgCard');
+    var thisImg = $(this).children('.imgCard');
 
     if (thisImg.hasClass('pause')) {
         $(this).children('.imgCard').attr("src", gif).removeClass('pause').addClass('play');
@@ -81,5 +91,24 @@ $(document).on("click", ".mainCard", function (event) {
 });
 
 
+var previousTarget = null;
+var shownext10;
+$(document).on("click", ".gifBtn", function (event) {
+    event.preventDefault();
+    var currentgif = $(this).attr("data-name");
+    if (currentgif === previousTarget) {
+        shownext10 = true;
+        showGif(previousTarget);
 
-$(document).on("click", ".gifBtn", showGif);
+    }
+    else {
+        $('.leftSection').empty();
+        $('.nextBtn').remove();
+        shownext10 = false;
+        showGif(currentgif);
+
+    }
+    previousTarget = currentgif;
+    return false;
+});
+
