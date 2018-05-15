@@ -31,10 +31,8 @@ var offset = 0;
 function showGif(el, eloff) {//get gif related to button clicked
 
     var gif = el;
-
-
     var queryURL;
-    if (shownext10) {
+    if (shownext10) {//if same button clicked then show more gifs
         console.log(shownext10);
         offset += 10;
         queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gif + "&limit=10&api_key=b9iYVAwBVidnNVDrHuHcJZehZKWVNYSs&offset=" + offset;
@@ -58,10 +56,12 @@ function showGif(el, eloff) {//get gif related to button clicked
         for (var i = 0; i < length; i++) {
             console.log(tempArray[i].rating);
             var outterCard = $('<div class="card outterCard">');
-            var textCard = $("<div class='card-body'>").append($("<p class='card-text'>")).text("Rating: " + tempArray[i].rating);
-            outterCard.append(textCard);
+            var ratingCard = $("<div class='card-body'>").append($("<p class='card-text'>Rating: " + tempArray[i].rating+"</p>")).append($("<p class='card-text'>Title: " + tempArray[i].title+"</p>"));
+         
+            
+            outterCard.append(ratingCard);
 
-            var card = $('<div class="card mainCard" data-gifLink="' + tempArray[i].images.downsized.url + '" data-imgLink="' + tempArray[i].images['480w_still'].url + '">').append($("<img class='card-img-top imgCard pause'" + "src='" + tempArray[i].images['480w_still'].url + "'alt='card image cap'>"));
+            var card = $('<div class="card mainCard" data-gifLink="' + tempArray[i].images['fixed_height'].url + '" data-imgLink="' + tempArray[i].images['fixed_height_still'].url + '">').append($("<img class='card-img-top imgCard pause'" + "src='" + tempArray[i].images['480w_still'].url + "'alt='card image cap'>"));
 
             outterCard.append(card);
             $('.leftSection').append(outterCard);

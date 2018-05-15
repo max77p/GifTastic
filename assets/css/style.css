@@ -27,8 +27,8 @@ body{
     width:30%;
 }
 .mainCard{
-    width:15em;
-    height:15em;
+    /*width:15em;
+    height:15em;*/
 }
 
 .mainCard:hover{
@@ -36,11 +36,14 @@ body{
 }
 .imgCard{
     width:100%;
-    height:100%;
+
 }
 
 .outterCard{
     margin-top:1em;
+    border:1px solid grey;
+    width:15em;
+    height:100%;
 }
 
 .nextBtn{
