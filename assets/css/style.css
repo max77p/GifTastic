@@ -1,6 +1,11 @@
 body{
   
 }
+
+.gifBtn{
+    margin-right:1em;
+}
+
 #btnSection{
     border:2px solid black;
     width:100%;
