@@ -7,7 +7,7 @@ body{
 display:flex;
 justify-content: center;
 margin:0 auto;
-    width:80%;
+width:80%;
 }
 .gifTab,.movieTab{
     border:1px solid #dddd;
@@ -21,17 +21,33 @@ margin:0 auto;
     text-transform: capitalize;
 }
 
+.topSection{
+    position: fixed;
+    top: 0;
+    width:80%;
+    margin: 0 0 0 -40%;
+    left:50%;
+z-index:999;
+background-color:#eaecef;
+padding:1em;
+border-radius:1em;
+}
 #btnSection{
-    width:100%;
+    width:80%;
     padding:0;
     border-top:4px double #dddd;
     border-bottom:4px double #dddd;
 }
 .mainSection{
+z-index:5;
     width:80%;
     padding:0;
     height:100%;
-    top:10;
+    margin-top:15em;
+  
+}
+.formSection{
+    width:80%;
     margin:0 auto;
 }
 
@@ -41,12 +57,21 @@ margin:0 auto;
     flex-wrap:wrap;
     min-height:30em;
    margin-top: 1em;
+   background-color:#ffffff;
 }
 .favStarColor{
 color:yellow;
 }
 
+#favStar{
+    position: absolute;
+    left: 13em;
+    top: 1em;
+    
+}
+
 .card-body{
+    position:relative;
     padding:.5em;
 }
 
