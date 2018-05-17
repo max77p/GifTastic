@@ -36,7 +36,7 @@ z-index:999;
 background-color:#eaecef;
 padding:1em;
 border-radius:1em;
-box-shadow: 0px 8px 0px grey;
+box-shadow: 0px 8px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.1) inset;
 }
 #btnSection{
     display: flex;
