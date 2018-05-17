@@ -94,10 +94,10 @@ console.log(page);
             outterCard.append(ratingCard);
 
             if(favStarImg==="N/A"){
-                var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<a href="+imdblink+"><p class='card-img-top naImg'>N/A</p></a>"));
+                var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<a href="+imdblink+" target='_blank' rel='noopener noreferrer'><p class='card-img-top naImg'>N/A</p></a>"));
             }
             else{
-                var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<a href="+imdblink+"><img class='card-img-top imgCard pause posterLink'" + "src='" + favStarImg + "'alt='N/A'></a>"));
+                var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<a href="+imdblink+" target='_blank' rel='noopener noreferrer'><img class='card-img-top imgCard pause posterLink'" + "src='" + favStarImg + "'alt='N/A'></a>"));
            
             }
 
