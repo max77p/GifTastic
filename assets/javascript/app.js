@@ -81,7 +81,7 @@ function showGif(el, eloff) {//get gif related to button clicked
             var passTitle = title.replace("GIF", "").replace(title[0], title[0].toUpperCase());
 
             var outterCard = $('<div class="card outterCard">');
-            var ratingCard = $("<div class='card-body'>").append(favLink).append(favStar).append($("<p class='card-text'>Rating: " + tempArray[i].rating.toUpperCase() + "</p>")).append($("<p class='card-text'>Title: " + passTitle + "</p>"));
+            var ratingCard = $("<div class='card-body'>").append(favLink).append(favStar).append($("<p class='card-text1'>Rating: " + tempArray[i].rating.toUpperCase() + "</p>")).append($("<p class='card-text'>Title: " + passTitle + "</p>"));
 
 
             outterCard.append(ratingCard);

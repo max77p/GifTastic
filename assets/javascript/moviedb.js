@@ -94,7 +94,7 @@ console.log(page);
             //var passTitle = title.replace("GIF", "").replace(title[0], title[0].toUpperCase());
 
             var outterCard = $('<div class="card outterCard">');
-            var ratingCard = $("<div class='card-body'>").append(favLink).append(favStar).append($("<p class='card-text'>Year: " + favStarYear + "</p>")).append($("<p class='card-text'>Title: " + title + "</p>"));
+            var ratingCard = $("<div class='card-body'>").append(favLink).append(favStar).append($("<p class='card-text1'>Year: " + favStarYear + "</p>")).append($("<p class='card-text'>Title: " + title + "</p>"));
 
 
             outterCard.append(ratingCard);

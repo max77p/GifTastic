@@ -86,6 +86,10 @@ color:yellow;
     overflow-y:hidden;
     margin-bottom: 0 !important;
 }
+
+.card-text1{
+    margin-bottom:0 !important;
+}
 .mainCard{
     height:210px;
 }
