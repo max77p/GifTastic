@@ -1,7 +1,7 @@
 body{
     font-family: 'Slabo 1.3em', serif;
     font-weight:bold;
-   font-size:1.3em;
+
 }
 
 .tabSection{
@@ -71,6 +71,11 @@ z-index:5;
     min-height:30em;
    margin-top: 1em;
    background-color:#ffffff;
+ 
+}
+
+p{
+    font-size:1.1em !important;
 }
 .favStarColor{
 color:yellow;
@@ -102,6 +107,7 @@ color:yellow;
 
 .card-text1{
     margin-bottom:0 !important;
+
 }
 .mainCard{
     height:13.25em;
