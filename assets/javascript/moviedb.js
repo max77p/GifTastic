@@ -69,6 +69,9 @@ function showGif(el) {//get gif related to button clicked
             var favStarType = tempArray[i].Type;
             var favStarId=tempArray[i].imdbID;
 
+            var imdblink='https://www.imdb.com/title/'+favStarId;
+            console.log(imdblink);
+
 
 
             var favStar = "<i class='fas fa-star' id='favStar' data-title='" + title+ "' data-imgLink='" + favStarImg+ "' data-Id='" + favStarId + "'></i>";//create favorites icon
@@ -85,8 +88,11 @@ function showGif(el) {//get gif related to button clicked
                 var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<p class='card-img-top naImg'>N/A</p>"));
             }
             else{
-                var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<a href='https://www.imdb.com/title/'><img class='card-img-top imgCard pause posterLink'" + "src='" + favStarImg + "'alt='N/A'></a>"));
+                var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<a href="+imdblink+"><img class='card-img-top imgCard pause posterLink'" + "src='" + favStarImg + "'alt='N/A'></a>"));
+           
             }
+
+    
             
 
             outterCard.append(card);
