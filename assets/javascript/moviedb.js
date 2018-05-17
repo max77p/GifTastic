@@ -25,9 +25,15 @@ $("#add-gif").on("click", function (event) {
     event.preventDefault();
 
     var movieInput = $("#gif-input").val().trim();
+   if(movieInput){
     movies.push(movieInput);
-    renderButtons();
     $("#gif-input").val('');//clears value after submit
+   }
+   else{
+       alert("Please input a search");
+   }
+   renderButtons();
+   
 });
 
 

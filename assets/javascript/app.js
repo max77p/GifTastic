@@ -8,8 +8,8 @@ function renderButtons() {
 
     for (elements in topics) {
 
-        var capital=topics[elements].substring(0,1).toUpperCase();
-       topics[elements]=topics[elements].replace(topics[elements][0],capital);
+        var capital = topics[elements].substring(0, 1).toUpperCase();
+        topics[elements] = topics[elements].replace(topics[elements][0], capital);
 
         var gifButton = $("<button>");
         gifButton.addClass("btn btn-default gifBtn");
@@ -25,10 +25,15 @@ $("#add-gif").on("click", function (event) {
     event.preventDefault();
 
     var gifInput = $("#gif-input").val().trim();
-   
-    topics.push(gifInput);
+    if (gifInput) {
+        topics.push(gifInput);
+        $("#gif-input").val('');//clears value after submit
+    }
+    else {
+        alert("Please input a search");
+    }
     renderButtons();
-    $("#gif-input").val('');//clears value after submit
+
 });
 
 
@@ -96,14 +101,15 @@ function showGif(el, eloff) {//get gif related to button clicked
     });
 }
 
-$(document).on("click","#favLink",function(){
-    var link=$(this).attr("data-gifLink");
+$(document).on("click", "#favLink", function () {//open link of gif in new window
+    var link = $(this).attr("data-gifLink");
     console.log(link);
     window.open(link);
 })
 
-function keepFav(el) {
-    var temp = document.getElementsByTagName("i");
+function keepFav(el) {//check which ones were saved as favorites in local storage and repopulate
+    var temp = document.getElementsByClassName("fa-star");
+     console.log(temp);
     console.log(temp.length);
     for (var i = 0; i < temp.length; i++) {
         if ($(temp[i]).attr("data-Id") in localStorage) {
@@ -168,7 +174,7 @@ $(document).on("click", ".mainCard", function (event) {//play and pause gifs
 
 var previousTarget = null;
 var shownext10;
-$(document).on("click", ".gifBtn", function (event) {
+$(document).on("click", ".gifBtn", function (event) {//if same button clicked twice then just append more results to page, if not clear and show new search
     event.preventDefault();
     var currentgif = $(this).attr("data-name");
     if (currentgif === previousTarget) {
