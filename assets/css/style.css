@@ -1,6 +1,7 @@
 body{
     font-family: 'Slabo 1.3em', serif;
     font-weight:bold;
+   font-size:1.3em;
 }
 
 .tabSection{
@@ -17,6 +18,7 @@ width:80%;
     margin-right:1em;
     min-width:5em;
     background-color:white;
+ 
 }
 
 .gifBtn:active,.gifBtn:focus{
@@ -27,6 +29,8 @@ width:80%;
 }
 
 .topSection{
+    display:flex;
+    flex-direction:column;
     position: fixed;
     top: 0;
     width:80%;
@@ -100,7 +104,7 @@ color:yellow;
     margin-bottom:0 !important;
 }
 .mainCard{
-    height:210px;
+    height:13.25em;
 }
 .mainCard:hover{
     cursor: pointer;
