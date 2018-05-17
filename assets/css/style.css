@@ -29,6 +29,7 @@ margin:0 auto;
     padding:0;
     height:100%;
     top:10;
+    margin:0 auto;
 }
 
 .gifSection{
@@ -82,6 +83,7 @@ height:100%;
     height: 100%;
     margin: 0 !important;
     background-color:#6F6F6F;
+    
 }
 
 a{

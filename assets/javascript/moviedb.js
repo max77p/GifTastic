@@ -106,6 +106,8 @@ function showGif(el) {//get gif related to button clicked
     });
 }
 
+
+
 function keepFav(el) {
     var temp = document.getElementsByTagName("i");
     console.log(temp.length);
