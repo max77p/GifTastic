@@ -85,7 +85,7 @@ function showGif(el) {//get gif related to button clicked
                 var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<p class='card-img-top naImg'>N/A</p>"));
             }
             else{
-                var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<img class='card-img-top imgCard pause'" + "src='" + favStarImg + "'alt='N/A'>"));
+                var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<a href='https://www.imdb.com/title/'><img class='card-img-top imgCard pause posterLink'" + "src='" + favStarImg + "'alt='N/A'></a>"));
             }
             
 

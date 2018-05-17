@@ -1,4 +1,4 @@
-var topics = ["panda", "dog", "cat", "bear", "elephant"];//animals who do funny things
+var topics = ["Panda", "Dog", "Cat", "Bear", "Elephant"];//animals who do funny things
 
 //var database = firebase.database();//firebase database
 
