@@ -82,7 +82,8 @@ color:yellow;
 .card-text{
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: scroll;
+    overflow-x: scroll;
+    overflow-y:hidden;
     margin-bottom: 0 !important;
 }
 .mainCard{
