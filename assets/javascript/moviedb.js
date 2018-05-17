@@ -1,4 +1,4 @@
-var movies = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];//movies
+var movies = ["Batman", "The Notebook", "Goonies", "The Lion King"];//movies
 
 //var database = firebase.database();//firebase database
 
