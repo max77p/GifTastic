@@ -71,11 +71,12 @@ function showGif(el, eloff) {//get gif related to button clicked
 
 
             var favStar = "<i class='fas fa-star' id='favStar' data-gifLink='" + favStarGif + "' data-imgLink='" + favStarImg + "' data-Id='" + favStarID + "'></i>";//create favorites icon
+            var favLink = "<i class='fas fa-link' id='favLink' data-gifLink='" + favStarGif + "'data-Id='" + favStarID + "'></i>";//create link icon dynamically
 
             var passTitle = title.replace("GIF", "").replace(title[0], title[0].toUpperCase());
 
             var outterCard = $('<div class="card outterCard">');
-            var ratingCard = $("<div class='card-body'>").append(favStar).append($("<p class='card-text'>Rating: " + tempArray[i].rating.toUpperCase() + "</p>")).append($("<p class='card-text'>Title: " + passTitle + "</p>"));
+            var ratingCard = $("<div class='card-body'>").append(favLink).append(favStar).append($("<p class='card-text'>Rating: " + tempArray[i].rating.toUpperCase() + "</p>")).append($("<p class='card-text'>Title: " + passTitle + "</p>"));
 
 
             outterCard.append(ratingCard);
@@ -94,6 +95,12 @@ function showGif(el, eloff) {//get gif related to button clicked
 
     });
 }
+
+$(document).on("click","#favLink",function(){
+    var link=$(this).attr("data-gifLink");
+    console.log(link);
+    window.open(link);
+})
 
 function keepFav(el) {
     var temp = document.getElementsByTagName("i");

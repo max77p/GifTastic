@@ -70,6 +70,10 @@ color:yellow;
     
 }
 
+#favStar:hover,#favLink:hover{
+    cursor: pointer;
+}
+
 .card-body{
     position:relative;
     padding:.5em;
