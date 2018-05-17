@@ -90,20 +90,20 @@ console.log(page);
 
 
             var favStar = "<i class='fas fa-star' id='favStar' data-title='" + title+ "' data-imgLink='" + favStarImg+ "' data-Id='" + favStarId + "'></i>";//create favorites icon
-
+            var favLink = "<i class='fas fa-link' id='favLink' data-movieLink='" + imdblink+ "'data-Id='" + favStarId + "'></i>";
             //var passTitle = title.replace("GIF", "").replace(title[0], title[0].toUpperCase());
 
             var outterCard = $('<div class="card outterCard">');
-            var ratingCard = $("<div class='card-body'>").append(favStar).append($("<p class='card-text'>Year: " + favStarYear + "</p>")).append($("<p class='card-text'>Title: " + title + "</p>"));
+            var ratingCard = $("<div class='card-body'>").append(favLink).append(favStar).append($("<p class='card-text'>Year: " + favStarYear + "</p>")).append($("<p class='card-text'>Title: " + title + "</p>"));
 
 
             outterCard.append(ratingCard);
 
             if(favStarImg==="N/A"){
-                var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<a href="+imdblink+" target='_blank' rel='noopener noreferrer'><p class='card-img-top naImg'>N/A</p></a>"));
+                var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<p class='card-img-top naImg'>N/A</p>"));
             }
             else{
-                var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<a href="+imdblink+" target='_blank' rel='noopener noreferrer'><img class='card-img-top imgCard pause posterLink'" + "src='" + favStarImg + "'alt='N/A'></a>"));
+                var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<img class='card-img-top imgCard pause posterLink'" + "src='" + favStarImg + "'alt='N/A'>"));
            
             }
 
@@ -121,10 +121,15 @@ console.log(page);
     });
 }
 
+$(document).on("click", "#favLink", function () {//open link of gif in new window
+    var link = $(this).attr("data-movieLink");
+    console.log(link);
+    window.open(link);
+})
 
 
 function keepFav(el) {
-    var temp = document.getElementsByTagName("i");
+    var temp = document.getElementsByClassName("fa-star");
     console.log(temp.length);
     for (var i = 0; i < temp.length; i++) {
         if ($(temp[i]).attr("data-Id") in localStorage) {

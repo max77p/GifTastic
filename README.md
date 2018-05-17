@@ -1,13 +1,13 @@
-# Welcome to my Science & Nature Trivia Game!
-![Game Screenshot](/assets/images/forReadme.png)
+# Welcome to the GIF and Movie Database!
+![App Screenshot](/assets/images/forReadme.png)
 
 
-### Here is how to play the game
+### Here is how to use the app.
 
-1. You have 20 seconds to answer each question. Dont Cheat!
-2. All questions are Science/Nature related
-3. Everytime you start a fresh game or restart game, you will be given random set of 7 questions in randomized order
-4. At the end of the trivia you will be shown how many questions were: Correct, Incorrect, and Unanswered 
+1. Select which category you want to look up: GIF or Movies
+2. You may search from the predefined buttons or you may add your own search query
+3. You can save your favorites for viewing later. Remember if you clear your cache then it will be gone.
+4. Link icon on the left allows you to visit the respective source. The star icon on the right allows you to save your favorites. 
 
 
 ### Enjoy!
