@@ -7,6 +7,10 @@ var topics = ["Panda", "Dog", "Cat", "Bear", "Elephant"];//animals who do funny 
 function renderButtons() {
 
     for (elements in topics) {
+
+        var capital=topics[elements].substring(0,1).toUpperCase();
+       topics[elements]=topics[elements].replace(topics[elements][0],capital);
+
         var gifButton = $("<button>");
         gifButton.addClass("btn btn-default gifBtn");
         gifButton.attr("data-name", topics[elements]);
@@ -21,8 +25,10 @@ $("#add-gif").on("click", function (event) {
     event.preventDefault();
 
     var gifInput = $("#gif-input").val().trim();
+   
     topics.push(gifInput);
     renderButtons();
+    $("#gif-input").val('');//clears value after submit
 });
 
 
@@ -62,10 +68,6 @@ function showGif(el, eloff) {//get gif related to button clicked
             var favStarGif = tempArray[i].images["fixed_height"].url;
             var favStarImg = tempArray[i].images["fixed_height_still"].url;
             var favStarID = tempArray[i].id;
-
-
-
-
 
 
             var favStar = "<i class='fas fa-star' id='favStar' data-gifLink='" + favStarGif + "' data-imgLink='" + favStarImg + "' data-Id='" + favStarID + "'></i>";//create favorites icon

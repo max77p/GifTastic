@@ -6,6 +6,11 @@ var movies = ["The Matrix", "The Notebook", "Mr. Nobody", "The Lion King"];//mov
 function renderButtons() {
 
     for (elements in movies) {
+        
+        var capital=movies[elements].substring(0,1).toUpperCase();
+        movies[elements]=movies[elements].replace(movies[elements][0],capital);
+      
+      
         var gifButton = $("<button>");
         gifButton.addClass("btn btn-default gifBtn");
         gifButton.attr("data-name", movies[elements]);
@@ -22,6 +27,7 @@ $("#add-gif").on("click", function (event) {
     var movieInput = $("#gif-input").val().trim();
     movies.push(movieInput);
     renderButtons();
+    $("#gif-input").val('');//clears value after submit
 });
 
 
@@ -29,32 +35,35 @@ $("#add-gif").on("click", function (event) {
 // Calling the renderButtons function to display the initial list of topics array
 renderButtons();
 
-var offset = 0;
+var page = 1;
 function showGif(el) {//get gif related to button clicked
 
     var movie = el;
     var queryURL 
     if (shownext10) {//if same button clicked then show more gifs
         console.log(shownext10);
-        offset += 1;
-        queryURL ="https://www.omdbapi.com/?s=" + movie + "&plot=short&apikey=trilogy&page="+offset;
+        page += 1;
+        queryURL ="https://www.omdbapi.com/?s=" + movie + "&page="+page+"&plot=short&apikey=trilogy";
     }
     else {
-        offset = 0;
-        queryURL = "https://www.omdbapi.com/?s=" + movie + "&plot=short&apikey=trilogy";
+        page = 1;
+        queryURL = "https://www.omdbapi.com/?s=" + movie + "&page="+page+"&plot=short&apikey=trilogy";
     }
-
+console.log(page);
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+        if(response.Response==="False"){
+            alert("No more to Search. Try different movie");
+        }
         console.log(response);
         var tempArray = response.Search;
         //console.log(Object.keys(tempArray));
         var length = tempArray.length;
         //var offset=response.totalResults;
-        //console.log(length);
+        console.log(response.totalResults);
         //console.log(offset);
        
 
@@ -64,13 +73,13 @@ function showGif(el) {//get gif related to button clicked
             var title = tempArray[i].Title;
             
             var favStarImg=tempArray[i].Poster;
-            console.log(favStarImg);
+            //console.log(favStarImg);
             
             var favStarType = tempArray[i].Type;
             var favStarId=tempArray[i].imdbID;
 
             var imdblink='https://www.imdb.com/title/'+favStarId;
-            console.log(imdblink);
+            //console.log(imdblink);
 
 
 
@@ -85,7 +94,7 @@ function showGif(el) {//get gif related to button clicked
             outterCard.append(ratingCard);
 
             if(favStarImg==="N/A"){
-                var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<p class='card-img-top naImg'>N/A</p>"));
+                var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<a href="+imdblink+"><p class='card-img-top naImg'>N/A</p></a>"));
             }
             else{
                 var card = $('<div class="card mainCard" data-title="' + title + '" data-imgLink="' + favStarImg+ '">').append($("<a href="+imdblink+"><img class='card-img-top imgCard pause posterLink'" + "src='" + favStarImg + "'alt='N/A'></a>"));
@@ -153,7 +162,7 @@ function favs(elId, elLink) {
 
 
 $(document).on("click", ".mainCard", function (event) {//play and pause gifs
-    event.preventDefault();
+    //event.preventDefault();
 
     var gif = $(this).attr("data-gifLink");
     var still = $(this).attr("data-imgLink");
