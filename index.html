@@ -9,38 +9,48 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
 </head>
 
 <body>
 
-    <div class="container" id="btnSection"> </div>
-    <!--put all buttons here-->
+    
 
     <div class="container mainSection">
+            <div class="container" id="btnSection"> </div>
+            <!--put all buttons here-->
         <div clas="row mainSection">
-            <div class="col-md-10 col-xs-10 leftSection">
-
-            </div>
-            <div class="col-md-2 col-xs-2 rightSection">
-                <form>
-                    <div class="form-group gif-form">
-                        <label for="gif-input">Add a Gif Bro</label>
-                        <input type="text" class="form-control" id="gif-input" aria-describedby="emailHelp" placeholder="Search here">
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="add-gif">Submit</button>
-                </form>
-
-
-            </div>
+            <form>
+                <div class="form-group gif-form">
+                    <br>
+                    <label for="gif-input">Add a Gif Bro</label>
+                    <input type="text" class="form-control" id="gif-input" aria-describedby="emailHelp" placeholder="Search here">
+                </div>
+                <button type="submit" class="btn btn-primary" id="add-gif">Submit</button>
+            </form>
+        </div>
+        <div class="jumbotron gifSection">
         </div>
 
 
     </div>
 
 
-
-
+    <!--<script src="https://www.gstatic.com/firebasejs/5.0.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCzZfVz_W5BOEkRr6TZT-p8ZjCk9MECBQQ",
+        authDomain: "giftastic-d8757.firebaseapp.com",
+        databaseURL: "https://giftastic-d8757.firebaseio.com",
+        projectId: "giftastic-d8757",
+        storageBucket: "giftastic-d8757.appspot.com",
+        messagingSenderId: "39214490843"
+      };
+      firebase.initializeApp(config);
+    </script>-->
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="./assets/app.js"></script>

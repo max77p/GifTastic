@@ -1,11 +1,13 @@
 var topics = ["panda", "dog", "cat", "bear", "elephant"];//animals who do funny things
 
+//var database = firebase.database();//firebase database
+
 // Function for rendering buttons
 function renderButtons() {
 
     for (elements in topics) {
         var gifButton = $("<button>");
-        gifButton.addClass("gifBtn");
+        gifButton.addClass("btn btn-default gifBtn");
         gifButton.attr("data-name", topics[elements]);
         gifButton.text(topics[elements]);
         gifButton.appendTo("#btnSection");
@@ -51,25 +53,88 @@ function showGif(el, eloff) {//get gif related to button clicked
         var tempArray = response.data;
         //console.log(Object.keys(tempArray));
         var length = tempArray.length;
-        console.log(length);
+        //console.log(length);
+
 
         for (var i = 0; i < length; i++) {
-            console.log(tempArray[i].rating);
-            var outterCard = $('<div class="card outterCard">');
-            var ratingCard = $("<div class='card-body'>").append($("<p class='card-text'>Rating: " + tempArray[i].rating+"</p>")).append($("<p class='card-text'>Title: " + tempArray[i].title+"</p>"));
-         
+            var title = tempArray[i].title;
+            var favStarGif = tempArray[i].images["fixed_height"].url;
+            var favStarImg = tempArray[i].images["fixed_height_still"].url;
+            var favStarID = tempArray[i].id;
+
+
             
+
+
+
+            var favStar = "<i class='fas fa-star' id='favStar' data-gifLink='" + favStarGif + "' data-imgLink='" + favStarImg + "' data-Id='" + favStarID + "'></i>";//create favorites icon
+
+            var passTitle = title.replace("GIF", "").replace(title[0], title[0].toUpperCase());
+
+            var outterCard = $('<div class="card outterCard">');
+            var ratingCard = $("<div class='card-body'>").append(favStar).append($("<p class='card-text'>Rating: " + tempArray[i].rating.toUpperCase() + "</p>")).append($("<p class='card-text'>Title: " + passTitle + "</p>"));
+
+
             outterCard.append(ratingCard);
 
             var card = $('<div class="card mainCard" data-gifLink="' + tempArray[i].images['fixed_height'].url + '" data-imgLink="' + tempArray[i].images['fixed_height_still'].url + '">').append($("<img class='card-img-top imgCard pause'" + "src='" + tempArray[i].images['480w_still'].url + "'alt='card image cap'>"));
 
             outterCard.append(card);
-            $('.leftSection').append(outterCard);
+            $('.gifSection').append(outterCard);
+
+
+            
         }
+
+        keepFav();
 
 
     });
 }
+
+function keepFav(el) {
+    var temp = document.getElementsByTagName("i");
+    console.log(temp.length);
+    for (var i = 0; i < temp.length; i++) {
+        if ($(temp[i]).attr("data-Id") in localStorage) {
+            console.log("match");
+            $(temp[i]).addClass("favStarColor");
+
+        }
+    }
+}
+
+var favorite;
+var favArray = [];
+var keyName = 1;
+$('.gifSection').on("click", '#favStar', function () {
+    var link = $(this).attr("data-imgLink");
+    var id = $(this).attr("data-Id");
+    $(this).toggleClass("favStarColor");
+
+    if ($(this).hasClass("favStarColor")) {
+        favorite = true;
+        //console.log(link);
+    }
+    else {
+        //favorites(link)
+        favorite = false;
+    }
+    favs(id, link);
+});
+
+//localStorage.clear();
+
+function favs(elId, elLink) {
+    if (favorite) {
+        localStorage.setItem(elId, elLink);
+    }
+    else {
+        localStorage.removeItem(elId, elLink);
+    }
+}
+
+
 
 $(document).on("click", ".mainCard", function (event) {//play and pause gifs
     event.preventDefault();
@@ -102,11 +167,9 @@ $(document).on("click", ".gifBtn", function (event) {
 
     }
     else {
-        $('.leftSection').empty();
-        $('.nextBtn').remove();
+        $('.gifSection').empty();
         shownext10 = false;
         showGif(currentgif);
-
     }
     previousTarget = currentgif;
     return false;
