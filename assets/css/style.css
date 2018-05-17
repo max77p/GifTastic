@@ -16,6 +16,11 @@ width:80%;
 .gifBtn{
     margin-right:1em;
     min-width:5em;
+    background-color:white;
+}
+
+.gifBtn:active,.gifBtn:focus{
+  outline:none !important;
 }
 #gif-input{
     text-transform: capitalize;
