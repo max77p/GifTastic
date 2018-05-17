@@ -1,5 +1,5 @@
 body{
-    font-family: 'Slabo 27px', serif;
+    font-family: 'Slabo 1.3em', serif;
     font-weight:bold;
 }
 
@@ -36,12 +36,16 @@ z-index:999;
 background-color:#eaecef;
 padding:1em;
 border-radius:1em;
+box-shadow: 0px 8px 0px grey;
 }
 #btnSection{
-    width:80%;
-    padding:0;
-    border-top:4px double #dddd;
-    border-bottom:4px double #dddd;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 80%;
+    padding: 0;
+    border-top: 4px double #dddd;
+    border-bottom: 4px double #dddd;
 }
 .mainSection{
 z-index:5;
