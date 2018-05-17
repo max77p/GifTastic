@@ -3,6 +3,16 @@ body{
     font-weight:bold;
 }
 
+.tabSection{
+display:flex;
+justify-content: center;
+margin:0 auto;
+    width:80%;
+}
+.gifTab,.movieTab{
+    border:1px solid #dddd;
+}
+
 .gifBtn{
     margin-right:1em;
     min-width:5em;
@@ -62,4 +72,14 @@ height:100%;
 
 .nextBtn{
     float:left;
+}
+
+.naImg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5em;
+    height: 100%;
+    margin: 0 !important;
+    background-color:#6F6F6F;
 }

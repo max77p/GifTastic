@@ -2,6 +2,7 @@ var topics = ["panda", "dog", "cat", "bear", "elephant"];//animals who do funny 
 
 //var database = firebase.database();//firebase database
 
+
 // Function for rendering buttons
 function renderButtons() {
 
@@ -63,7 +64,7 @@ function showGif(el, eloff) {//get gif related to button clicked
             var favStarID = tempArray[i].id;
 
 
-            
+
 
 
 
@@ -83,7 +84,7 @@ function showGif(el, eloff) {//get gif related to button clicked
             $('.gifSection').append(outterCard);
 
 
-            
+
         }
 
         keepFav();
@@ -174,4 +175,3 @@ $(document).on("click", ".gifBtn", function (event) {
     previousTarget = currentgif;
     return false;
 });
-
