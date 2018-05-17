@@ -83,3 +83,9 @@ height:100%;
     margin: 0 !important;
     background-color:#6F6F6F;
 }
+
+a{
+    display:inline-block;
+    height:100%;
+    z-index:9999;
+}
